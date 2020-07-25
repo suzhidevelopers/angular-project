@@ -1,0 +1,34 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <h2>Sign In</h2>
+    
+    
+    <!-- Icon -->
+    <!--<div class="fadeIn first">
+      <img src="assets/login_user_avatar.png" id="icon" alt="User Icon" />
+    </div>-->
+
+    <!-- Login Form -->
+    <!-- <form (ngSubmit)="onSubmit()">  -->
+      <form>
+
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="Email or phone">
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+     
+     <a  class="fadeIn fourth" [routerLink]="'/home'" >submit</a>
+
+    
+      
+    </form>
+    <!---- <input type="submit" class="fadeIn fourth" value="Log In"> -->
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>

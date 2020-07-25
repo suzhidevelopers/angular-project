@@ -5,8 +5,10 @@ import {SecondComponent} from './second/second.component';
 import {ThirdComponent} from './third/third.component';
 import {FourthComponent} from './fourth/fourth.component';
 
+
 const routes: Routes = [
-  {path: '', component: FirstComponent, pathMatch: 'full'},
+  {path: 'home', component: FirstComponent, pathMatch: 'prefix'},
+
   {path: 'devfestfl', children: [
     {path: 'sessions', children: [
       {path: 'my-ally-cli', component: ThirdComponent},

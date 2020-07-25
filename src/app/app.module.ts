@@ -19,6 +19,7 @@ import { ThirdComponent } from "./third/third.component";
 import { FourthComponent } from "./fourth/fourth.component";
 import { NavService } from "./nav.service";
 import { TopNavComponent } from "./top-nav/top-nav.component";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -40,9 +41,10 @@ import { TopNavComponent } from "./top-nav/top-nav.component";
     SecondComponent,
     ThirdComponent,
     FourthComponent,
-    TopNavComponent
+    TopNavComponent,
+    LoginComponent
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [LoginComponent],
   providers: [NavService]
 })
 export class AppModule {}
