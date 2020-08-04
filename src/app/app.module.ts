@@ -2,49 +2,32 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
-import { MatIconModule } from "@angular/material/icon";
-import { MatListModule } from "@angular/material/list";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatButtonModule } from "@angular/material/button";
 
 import { AppComponent } from "./app.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MenuListItemComponent } from "./menu-list-item/menu-list-item.component";
+
 import { AppRoutingModule } from "./app-routing.module";
-import { FirstComponent } from "./first/first.component";
-import { SecondComponent } from "./second/second.component";
-import { ThirdComponent } from "./third/third.component";
-import { FourthComponent } from "./fourth/fourth.component";
-import { NavService } from "./nav.service";
-import { TopNavComponent } from "./top-nav/top-nav.component";
+
 import { LoginComponent } from './login/login.component';
+import { InMemoryWebApiModule } from "angular-in-memory-web-api";
+import { BackendService } from "./backend.service";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
-    MatIconModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    InMemoryWebApiModule.forRoot(BackendService)
   ],
   declarations: [
     AppComponent,
-    MenuListItemComponent,
-    FirstComponent,
-    SecondComponent,
-    ThirdComponent,
-    FourthComponent,
-    TopNavComponent,
     LoginComponent
   ],
-  bootstrap: [LoginComponent],
-  providers: [NavService]
+  bootstrap: [AppComponent],
+  providers: []
 })
-export class AppModule {}
+export class AppModule { }

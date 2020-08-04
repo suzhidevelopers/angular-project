@@ -249,6 +249,11 @@ html {
   .underlineHover:hover:after{
     width: 100%;
   }
+
+  .errorMessage {
+    color: red;
+    text-align: center;
+  }
   
   
   
@@ -261,4 +266,3 @@ html {
   #icon {
     width:60%;
   }
-  

@@ -4,31 +4,27 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <h2>Sign In</h2>
-    
-    
-    <!-- Icon -->
-    <!--<div class="fadeIn first">
-      <img src="assets/login_user_avatar.png" id="icon" alt="User Icon" />
-    </div>-->
-
-    <!-- Login Form -->
-    <!-- <form (ngSubmit)="onSubmit()">  -->
-      <form>
-
-      <input type="text" id="login" class="fadeIn second" name="username" placeholder="Email or phone">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
-     
-     <a  class="fadeIn fourth" [routerLink]="'/home'" >submit</a>
-
-    
-      
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col">
+          <input type="text" id="login" formControlName="username" placeholder="Email or phone">
+          <div *ngIf="submitted && f.username.errors">
+            <div *ngIf="f.username.errors.required" class="errorMessage">Username is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <input type="text" id="password" formControlName="password" placeholder="Password">
+          <div *ngIf="submitted && f.password.errors">
+            <div *ngIf="f.password.errors.required" class="errorMessage">Password is required</div>
+          </div>
+        </div>
+      </div>
+      <input type="submit" class="fadeIn fourth" value="Login">
     </form>
-    <!---- <input type="submit" class="fadeIn fourth" value="Log In"> -->
-
-    <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
-
   </div>
 </div>
