@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -10,11 +9,11 @@ export class StorageService {
     constructor() { }
 
     public setValue(key, value) {
-        this.source.setItem(`AC_${key}`, JSON.stringify(value));
+        this.source.setItem(`${key}`, JSON.stringify(value));
     }
 
     public getValue(key) {
-        let value = this.source.getItem(`AC_${key}`);
+        let value = this.source.getItem(`${key}`);
         if (value) {
             return JSON.parse(value);
         }
@@ -22,11 +21,11 @@ export class StorageService {
     }
 
     public clearValue(key) {
-        this.source.removeItem(`AC_${key}`);
+        this.source.removeItem(`${key}`);
     }
 
     public resetSession() {
-        let keys = ["sessionDetails", "sessionObject", "notifications"];
+        let keys = ["sessionDetails", "sessionObject"];
         keys.forEach(key => this.clearValue(key))
     }
 
@@ -46,30 +45,15 @@ export class StorageService {
         return this.getValue("userPrefs")
     }
 
-    public getOrgId() {
-        return this.getValue("sessionObject")["orgId"]
-    }
-
     public hasAccess() {
-        return this.getRole().isPowerUser || this.getRole().isAdminUser;
+        //TODO
     }
-
-    public getPlatform() {
-        return {
-            isAzure: this.getValue("sessionObject")["loginPlatform"] == "azure",
-            isAWS: this.getValue("sessionObject")["loginPlatform"] == "aws",
-            isGCP: this.getValue("sessionObject")["loginPlatform"] == "gcp"
-        }
-    }
-    public getLoginPlatform(){
-        return this.getValue("sessionObject")["loginPlatform"];
-    }
+    
     public getRole() {
         if (!this.getValue("sessionDetails")) return {};
         return {
-            isPowerUser: this.getValue("sessionDetails")["role"] == "power user",
-            isAdminUser: this.getValue("sessionDetails")["role"] == "admin user",
-            isDeveloper: this.getValue("sessionDetails")["role"] == "developer",
+            //isPowerUser: this.getValue("sessionDetails")["role"] == "power user",
+            //TODO
         }
     }
 }

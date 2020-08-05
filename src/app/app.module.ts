@@ -13,11 +13,14 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { BackendService } from "./backend.service";
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from "./shared/shared.module";
+
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    SharedModule,
     FlexLayoutModule,
     AppRoutingModule,
     ReactiveFormsModule,
