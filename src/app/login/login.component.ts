@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StorageService } from '../common/services/api/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     { id: 4, username: 'jagadeesh', password: 'jagadeesh' }
   ];
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
     var isSuccessful = this.authenticate(this.loginForm.get('username').value, this.loginForm.get('password').value);
     if (isSuccessful) {
       console.log('Authentication Successful');
-      //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
+      let user = { "username": this.loginForm.get('username').value };
+      this.storageService.setValue("sessionDetails", user);
       this.router.navigate(['home']);
     } else {
       console.log('Authentication Failed');
