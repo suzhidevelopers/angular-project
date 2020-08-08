@@ -5,7 +5,7 @@ import { AuthGuard } from './common/services/api';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, pathMatch: 'prefix' },
+  { path: 'login', component: LoginComponent },
   { path: '', canLoad: [AuthGuard], loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: '**', redirectTo: '' }
 ];

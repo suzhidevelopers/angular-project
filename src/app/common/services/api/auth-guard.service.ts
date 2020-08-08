@@ -11,7 +11,7 @@ import { StorageService } from './storage.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  checkLoginUrl : any;
+  checkLoginUrl: any;
   constructor(private authService: AuthService, private router: Router, private storage: StorageService) {
   }
 
@@ -25,10 +25,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   canLoad(route: Route): boolean {
-    console.log("Inside Authguard canLoad");
     let url = `/${route.path}`;
     this.checkLoginUrl = this.checkLogin(url);
-    console.log("Return Login URL" + this.checkLoginUrl);
     return this.checkLoginUrl;
   }
 

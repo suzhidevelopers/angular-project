@@ -1,0 +1,70 @@
+Method : POST
+
+UrL: /login
+
+Headers:
+ Content-Type : application/json,application/xml
+ Accept : application/json,application/xml
+ 
+Body:
+{
+"email":"<<Email_id>>",
+"password":"<<passwd>>"
+}
+Response code: 200
+
+Response :
+{
+"JWT":"<<TOKEN>>"
+}
+
+Response code: 401
+
+Response :
+{
+"message" : "invalid username or password",
+"error_code" : "E001.."
+}
+
+==================================================================
+
+Method : GET
+
+UrL: /home
+
+Headers:
+ Content-Type : application/json,application/xml
+ Accept : application/json,application/xml
+ Authorization : Bearer "<<JWT>>"
+
+Response code: 200
+ 
+Response :
+{
+"firstname"  : "<<firstname>>",
+"lastname"   : "<<lastname>>",
+"display"    : "<<displayname>>",
+"email"      : "<<email>>"
+}
+
+Response code: 401
+
+Response :
+{
+"message" : "malformed jwt",
+"error_code" : "E002.."
+}
+
+Response code: 401
+
+Response :
+{
+"message" : "jwt is expried"
+"error_code" : "E003.."
+}
+
+==============================================================
+
+
+
+

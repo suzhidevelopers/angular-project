@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private storageService: StorageService) { }
 
   ngOnInit(): void {
+    if (this.storageService.getValue('sessionDetails') != null) {
+      this.router.navigate(['/home'])
+    }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
@@ -32,24 +35,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Inside onSubmit');
     this.submitted = true;
     // Validation Failed
     if (this.loginForm.invalid) {
-      console.log('Form Validation Failed');
+
       return;
     }
-    console.log('Proceeding to perform Authentication Check');
-    console.log(this.loginForm.get('username').value);
-    console.log(this.loginForm.get('password').value);
+
     var isSuccessful = this.authenticate(this.loginForm.get('username').value, this.loginForm.get('password').value);
     if (isSuccessful) {
-      console.log('Authentication Successful');
       let user = { "username": this.loginForm.get('username').value };
       this.storageService.setValue("sessionDetails", user);
-      this.router.navigate(['home']);
-    } else {
-      console.log('Authentication Failed');
+      this.router.navigate(['/home']);
     }
   }
 
@@ -57,8 +54,6 @@ export class LoginComponent implements OnInit {
     var user = this.validUsers.filter((user) => {
       return user.username == name && user.password == password;
     })
-    console.log(user);
     return user.length > 0 ? true : false;
   }
-
 }
