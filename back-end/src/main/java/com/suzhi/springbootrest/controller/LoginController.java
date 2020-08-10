@@ -38,6 +38,7 @@ public class LoginController {
 
 		else {
 			JWTResponse jwtResponse = new JWTResponse("eKlY");
+			System.out.println(jwtResponse);
 			return ResponseEntity.status(HttpStatus.OK).body(jwtResponse);
 		}
 	}

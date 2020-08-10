@@ -2,18 +2,18 @@ package com.suzhi.springbootrest.JWT;
 
 public class JWTResponse {
 
-	public JWTResponse(String response) {
+	public JWTResponse(String jwt) {
 		super();
-		this.response = response;
+		this.jwt = jwt;
 	}
 
-	public String getResponse() {
-		return response;
+	public String getJwt() {
+		return jwt;
 	}
 
-	public void setResponse(String response) {
-		this.response = response;
+	public void setJwt(String jwt) {
+		this.jwt = jwt;
 	}
 
-	public String response;
+	public String jwt;
 }
