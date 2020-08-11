@@ -1,8 +1,8 @@
-package com.suzhi.springbootrest.JWT;
+package com.suzhi.springbootrest.response;
 
-public class JWTResponse {
+public class LoginResponse {
 
-	public JWTResponse(String jwt) {
+	public LoginResponse(String jwt) {
 		super();
 		this.jwt = jwt;
 	}
