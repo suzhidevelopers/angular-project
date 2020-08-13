@@ -43,6 +43,7 @@ public class LoginController {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
 					authenticationRequest.getPassword()));
+					//passwordEncoder.encode(authenticationRequest.getPassword())));
 		} catch (BadCredentialsException be) {
 			ErrorResponse errorResponse = new ErrorResponse(ErrorConstants.INVALID_EMAIL_PWD,
 					ErrorResponse.ErrorCodes.E001);
@@ -55,9 +56,11 @@ public class LoginController {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
 		}
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+		//final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
 
-		final String jwt = jwtTokenUtil.generateToken(userDetails);
+		// final String jwt = jwtTokenUtil.generateToken(userDetails);
+		
+		final String jwt = jwtTokenUtil.generateToken(authenticationRequest.getEmail());
 
 		LoginResponse jwtResponse = new LoginResponse(jwt);
 		return ResponseEntity.status(HttpStatus.OK).body(jwtResponse);

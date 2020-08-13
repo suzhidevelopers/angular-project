@@ -12,7 +12,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	public UserDetails loadUserByUsername(String name) {
 		
-		return new User("divakar@suzhi.com", "divakar", new ArrayList<>());
+		return new User("divakar@suzhi.com", "divakar123", new ArrayList<>());
 	}
 
 }
